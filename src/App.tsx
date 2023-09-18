@@ -54,8 +54,15 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="ChatList" component={ChatList} />
-        <Stack.Screen name="ChatView" component={ChatView} />
+        <Stack.Screen
+          name="Chats"
+          component={ChatList}
+        />
+        <Stack.Screen
+          name="ChatView"
+          component={ChatView}
+          options={{headerShown: false}}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );

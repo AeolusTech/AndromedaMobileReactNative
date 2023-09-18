@@ -1,20 +1,23 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-const ChatView = ({ route }) => {
+const ChatView = ({ route, navigation }) => {
   const { name, profilePic } = route.params;
 
   return (
-    <View>
-      <View>
-        <Image source={{ uri: profilePic }} />
-        <Text>{name}</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.backButton}>←</Text>
+        </TouchableOpacity>
+        <Image source={{ uri: profilePic }} style={styles.profilePic} />
+        <Text style={styles.name}>{name}</Text>
       </View>
       <View>
         {/* Chat messages here */}
       </View>
-      <View>
-        <TextInput placeholder="Type a message" />
+      <View style={styles.footer}>
+        <TextInput placeholder="Type a message" style={styles.input} />
         <TouchableOpacity>
           {/* Microphone Icon */}
         </TouchableOpacity>
@@ -25,5 +28,37 @@ const ChatView = ({ route }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#f2f2f2',
+  },
+  backButton: {
+    fontSize: 24,
+    marginRight: 16,
+  },
+  profilePic: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  name: {
+    fontWeight: 'bold',
+    marginLeft: 16,
+  },
+  footer: {
+    flexDirection: 'row',
+    padding: 16,
+  },
+  input: {
+    flex: 1,
+  },
+});
 
 export default ChatView;

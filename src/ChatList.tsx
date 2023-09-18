@@ -11,14 +11,14 @@ const ChatList = () => {
     ];
     const navigation = useNavigation();
 
-    const goToChat = (name: string) => {
-        navigation.navigate('ChatView', { name });
+    const goToChat = (name: string, profilePic: string) => {
+        navigation.navigate('ChatView', { name, profilePic });
       };
 
     return (
         <View style={styles.container}>
             {chats.map((chat, index) => (
-                <TouchableOpacity onPress={() => goToChat(chat.name)}>
+                <TouchableOpacity onPress={() => goToChat(chat.name, chat.profilePic)}>
                     <View key={index} style={styles.chatBox}>
                         <View style={styles.profilePic}>
                             <Image style={styles.image} source={require('../assets/pictures/man-0.png')} />
