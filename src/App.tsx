@@ -42,15 +42,26 @@
 
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import ChatList from './ChatList';  // Importing ChatList
+import { createStackNavigator } from '@react-navigation/stack';
+import ChatList from './ChatList';
+import ChatView from './ChatView';
+import { NavigationContainer } from '@react-navigation/native';
 
-const App: React.FC = () => {
+
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <ChatList />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="ChatList" component={ChatList} />
+        <Stack.Screen name="ChatView" component={ChatView} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
+}
+
+
 
 const styles = StyleSheet.create({
   container: {
