@@ -10,7 +10,7 @@ const ChatView = ({ route, navigation }) => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.backButton}>←</Text>
         </TouchableOpacity>
-        <Image source={{ uri: profilePic }} style={styles.profilePic} />
+        <Image style={styles.image} source={profilePic} />
         <Text style={styles.name}>{name}</Text>
       </View>
       <View>
@@ -36,8 +36,13 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
+    padding: 32,
     backgroundColor: '#f2f2f2',
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   backButton: {
     fontSize: 24,
